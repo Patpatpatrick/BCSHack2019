@@ -187,6 +187,35 @@ body{
     border-radius: 30%
 }
 
+#Take-Photo {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+    }
+
+
+    #Submit-Photo {
+        text-decoration: none;
+        font-size: 70px;
+        border: black 2px solid;
+        color: black;
+        padding: 20px;
+        border-radius: 30%
+        }
+
+
+#Confirm-Location {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+    }
+
 #Yes {
     text-decoration: none;
     font-size: 70px;

@@ -205,3 +205,11 @@ body{
     border-radius: 30%
 }
 
+#Traffic{
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}

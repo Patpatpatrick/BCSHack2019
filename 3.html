@@ -5,6 +5,7 @@
     <script src="angular.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
   <header>
@@ -35,18 +36,60 @@
       
 
       <br>
- 
-     
+          <p>Click the button to get your coordinates.</p>
+
+          <button class = submit onclick="getLocation()">Add location</button>
+          
+          <p id="location here"></p>
+          
+          <script>
+          var x = document.getElementById("location here");
+          
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+          
+          function showPosition(position) {
+            
+            // "Latitude: " + position.coords.latitude + 
+            // "<br>Longitude: " + position.coords.longitude;
+            const lat = position.coords.latitude;
+            const long = position.coords.longitude;
+            const urlAddress = "https://us1.locationiq.com/v1/reverse.php?key=5a66057ee3efb4&lat=" + lat + "&lon=" + long + "&format=json";
+            console.log(urlAddress);
+            var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": urlAddress,
+              "method": "GET"
+            }
+
+            $.ajax(settings).done(function (response) {
+              
+              const adressToShow = response["display_name"];
+              console.log(adressToShow);
+              x.innerHTML = "Location: " + adressToShow;
+            });
+          }
+          </script>
+          <br>
+          <br>
       <button class = submit ng-disabled="!files" ng-click="upload(files)">
           Submit
-      </button>
-      
+      </button>    
       <div class = category> 
     <p>Category: {{category}}</p>
-    <p>Possible Contents: {{tags}}</p>
+
+    
       </div>
 
-      
+  
+
+
   <div class = Back>
       <a id = "Back" href="./3.html">Back</a>
     </div>

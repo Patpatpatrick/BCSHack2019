@@ -6,7 +6,8 @@ html{
   }
 
 body{
-    background-image: url("drop.png");
+    background-image: url("background.png");
+    background-size: calc(450px + (500 - 450) * ((100vw - 300px) / (1600 - 300)));
     height: 100%;
     font-family: 'Georgia, serif';
     text-align: center;

@@ -1,35 +1,136 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="full-screen" content="yes"/>
-  <meta name="screen-orientation" content="portrait"/>
-  <meta name="viewport" content="user-scalable=no"/>
-  <link href="./style.css" rel="stylesheet" type="text/css"/>
-</head>
 
-<body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
-  <script type="text/javascript"></script>
+  <head>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
 
   <header>
-    <h1>Food Scraps</h1>
+    <h1>OneVAN App</h1>
   </header>
 
-  <div class = Description>
-  <P>-Fruit, vegetables, grains and other food waste</P>
-  <P>-Paper towels & napkins</P>
-  <P>-Compostable food containers</P>
-  <P>-Coffee gourds & tea bags</P>
+  
+  
+  <div class = browse>  
+  <body id= "browse" ng-app="app" ng-controller="ctrl">
+      <div class="container">
+      <img src="./images/camera.png" alt="camera">
+      <div class="upload-btn-wrapper">
+      <button class="btn" id="submitphoto">Submit photo </button>
+      <input type="file" name="iptfileupload" onchange='show()'return-files ng-model="files"/>
+      <p><img src='1.jpg' 
+        onload='if (this.width>400 || this.height>600) if (this.width/this.height>2/3) this.width=400; else this.height=600;' 
+        onclick="picture_rotate(this)"
+        alt='' id='img'/></p>
+  
+    </div>
+    </div>
   </div>
 
-    <div class = Back>
-      <a id = "Back" href="./2.html">Back</a>
+
+      
+      
+      
+
+      <br>
+ 
+     
+      <button class = submit ng-disabled="!files" ng-click="upload(files)">
+          Submit
+      </button>
+      
+      <div class = category> 
+    <p>Category: {{category}}</p>
+    <p>Possible Contents: {{tags}}</p>
+      </div>
+
+      
+  <div class = Back>
+      <a id = "Back" href="./3.html">Back</a>
     </div>
-        
+  
 
 
-</body>
-</html>
+  <script type="text/javascript">
+
+
+      
+      function getPath(obj,fileQuery,transImg) {
+          var imgSrc = '', imgArr = [], strSrc = '' ;
+
+          if(window.navigator.userAgent.indexOf("MSIE")>=1){
+              if(obj.select){
+                  obj.select();
+                  var path=document.selection.createRange().text;
+                  alert(path) ;
+                  obj.removeAttribute("src");
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.setAttribute("src",transImg);
+                      obj.style.filter=
+                          "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+path+"', sizingMethod='scale');";  // IE通过滤镜的方式实现图片显示
+                  }else{
+                      throw new Error('File type Error! please image file upload..');  
+                  }
+              }else{
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.src = fileQuery.value ;
+                  }else{
+                      throw new Error('File type Error! please image file upload..') ;
+                  }
+
+              }
+
+          } else{
+              var file =fileQuery.files[0];
+              var reader = new FileReader();
+              reader.onload = function(e){
+
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.setAttribute("src", e.target.result) ;
+                  }else{
+                      //try{
+                      throw new Error('File type Error! please image file upload..') ;
+                      //}catch(e){
+                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                      //}
+                  }
+
+                  // alert(e.target.result); 
+              }
+              reader.readAsDataURL(file);
+          }
+      }
+
+      function show() {
+        var preview = document.querySelector('img');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+          preview.src = reader.result;
+          var element = document.getElementById('submitphoto');
+          element.parentNode.removeChild(element);
+          
+        }, false);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+
+      }
+
+  </script>
+  </body>
+
+

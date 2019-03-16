@@ -1,0 +1,166 @@
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+body{
+    background-image: url("drop.png");
+    height: 100%;
+    font-family: 'Comic Sans MS';
+    text-align: center;
+}
+ 
+ h1 {
+  margin-top: 100px;
+  margin-bottom: 100px;   
+  color: green;
+  font-size: 70px;
+ }
+
+.Button{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.Home{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.Back{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.Description{
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-size: 70px;
+}
+
+.con{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+#Tutorial {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Learn {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Track {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Back {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Home {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Yes {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#No {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Add {
+    text-decoration: none;
+    font-size: 70px;
+    border: black 2px solid;
+    color: black;
+    padding: 20px;
+    border-radius: 30%
+}
+
+#Tutorial:hover {
+    color: white;
+    border-color: white;
+}
+
+#Learn:hover {
+    color: white;
+    border-color: white;
+}
+
+
+#Track:hover {
+    color: white;
+    border-color: white;
+}
+
+#Back:hover {
+    color: white;
+    border-color: white;
+}
+
+#Home:hover {
+    color: white;
+    border-color: white;
+}
+
+#Yes:hover {
+    color: white;
+    border-color: white;
+}
+
+#No:hover {
+    color: white;
+    border-color: white;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+    text-align: left;
+  }
+
+  #Add:hover {
+    color: white;
+    border-color: white;
+}

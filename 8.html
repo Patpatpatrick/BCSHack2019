@@ -1,0 +1,140 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='viewport' conent='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+<meta name="keywords" content="Upload Photo" />
+<meta name="description" content="Upload Photo And Display"/>
+<title>Upload Photo And Display</title>
+<link href="./camera.css" rel="stylesheet" type="text/css"/>
+</head>
+
+
+<body>
+	<form action='' method='post' name='myform'>
+        <input type='file' id='iptfileupload' onchange='show()' value='' accept="image/*" capture="camera" />
+        <br>please upload a photo<br>
+        
+    </form>
+    <img src='1.jpg' 
+        onload='if (this.width>400 || this.height>600) if (this.width/this.height>2/3) this.width=400; else this.height=600;' 
+        onclick="picture_rotate(this)"
+        alt='' id='img'/>
+    <script type="text/javascript">
+
+
+        
+        function getPath(obj,fileQuery,transImg) {
+            var imgSrc = '', imgArr = [], strSrc = '' ;
+
+            if(window.navigator.userAgent.indexOf("MSIE")>=1){
+                if(obj.select){
+                    obj.select();
+                    var path=document.selection.createRange().text;
+                    alert(path) ;
+                    obj.removeAttribute("src");
+                    imgSrc = fileQuery.value ;
+                    imgArr = imgSrc.split('.') ;
+                    strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                    if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                        obj.setAttribute("src",transImg);
+                        obj.style.filter=
+                            "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+path+"', sizingMethod='scale');";  // IE通过滤镜的方式实现图片显示
+                    }else{
+                        //try{
+                        throw new Error('File type Error! please image file upload..');  
+                        //}catch(e){
+                        //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                        //}
+                    }
+                }else{
+                    // alert(fileQuery.value) ;
+                    imgSrc = fileQuery.value ;
+                    imgArr = imgSrc.split('.') ;
+                    strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                    if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                        obj.src = fileQuery.value ;
+                    }else{
+                        //try{
+                        throw new Error('File type Error! please image file upload..') ;
+                        //}catch(e){
+                        //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                        //}
+                    }
+
+                }
+
+            } else{
+                var file =fileQuery.files[0];
+                var reader = new FileReader();
+                reader.onload = function(e){
+
+                    imgSrc = fileQuery.value ;
+                    imgArr = imgSrc.split('.') ;
+                    strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                    if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                        obj.setAttribute("src", e.target.result) ;
+                    }else{
+                        //try{
+                        throw new Error('File type Error! please image file upload..') ;
+                        //}catch(e){
+                        //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                        //}
+                    }
+
+                    // alert(e.target.result); 
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function show(){
+            var file_img=document.getElementById("img"),
+            iptfileupload = document.getElementById('iptfileupload') ;
+            getPath(file_img,iptfileupload,file_img) ;
+            var judgebutton = document.createElement("button");
+            judgebutton.setAttribute("id", "Div1");
+            judgebutton.innerHTML = "Submit";
+            var body = document.getElementsByTagName("body")[0];
+            body.appendChild(judgebutton);
+            function $(id){return document.getElementById(id);}
+            $("Div1").onclick = function (){
+            // result = function(file) => model() 
+            // switch(result)
+            window.location.href="./9.html";
+            // <input name="btnClick" type="button" id="btnClick" value="Judge"/>
+            // var button = document.createElement("button");
+            // button.innerHTML = "Metal";
+            // var button2 = document.createElement("button");
+            // button2.innerHTML = "Plastic";
+            // var button3 = document.createElement("button");
+            // button3.innerHTML = "Paper";
+            // var button4 = document.createElement("button");
+            // button4.innerHTML = "Organic";
+            // // 2. Append somewhere
+            // var body = document.getElementsByTagName("body")[0];
+            // body.appendChild(button);
+            // body.appendChild(button2);
+            // body.appendChild(button3);
+            // body.appendChild(button4);
+            // // 3. Add event handler
+            // button.addEventListener ("click", function() {
+            //     window.location.href="./9.html";
+            // });
+            // button2.addEventListener ("click", function() {
+            // alert("did something");
+            // });
+            // button3.addEventListener ("click", function() {
+            // alert("did something");
+            // });
+            // button4.addEventListener ("click", function() {
+            // alert("did something");
+            // });
+            // this.onclick = null;
+        }
+        }
+
+    </script>
+
+</body>
+</html>

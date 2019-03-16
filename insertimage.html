@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  
+  <div class = browse>  
+  <body id= "browse" ng-app="app" ng-controller="ctrl">
+  </div>
+
+      
+    <input type="file" id='iptfileupload' onchange='show()' return-files ng-model="files">
+      
+      <p><img src='1.jpg' 
+      onload='if (this.width>400 || this.height>600) if (this.width/this.height>2/3) this.width=400; else this.height=600;' 
+      onclick="picture_rotate(this)"
+      alt='' id='img'/></p>
+
+      
+
+      <br>
+ 
+     
+      <button class = submit ng-disabled="!files" ng-click="upload(files)">
+          Submit
+      </button>
+      
+      <div class = category> 
+    <p>Category: {{category}}</p>
+    <p>Possible Contents: {{tags}}</p>
+      </div>
+
+      
+  <div class = Back>
+      <a id = "Back" href="./2.html">Back</a>
+    </div>
+  
+
+
+  <script type="text/javascript">
+
+
+      
+      function getPath(obj,fileQuery,transImg) {
+          var imgSrc = '', imgArr = [], strSrc = '' ;
+
+          if(window.navigator.userAgent.indexOf("MSIE")>=1){
+              if(obj.select){
+                  obj.select();
+                  var path=document.selection.createRange().text;
+                  alert(path) ;
+                  obj.removeAttribute("src");
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.setAttribute("src",transImg);
+                      obj.style.filter=
+                          "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+path+"', sizingMethod='scale');";  // IE通过滤镜的方式实现图片显示
+                  }else{
+                      //try{
+                      throw new Error('File type Error! please image file upload..');  
+                      //}catch(e){
+                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                      //}
+                  }
+              }else{
+                  // alert(fileQuery.value) ;
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.src = fileQuery.value ;
+                  }else{
+                      //try{
+                      throw new Error('File type Error! please image file upload..') ;
+                      //}catch(e){
+                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                      //}
+                  }
+
+              }
+
+          } else{
+              var file =fileQuery.files[0];
+              var reader = new FileReader();
+              reader.onload = function(e){
+
+                  imgSrc = fileQuery.value ;
+                  imgArr = imgSrc.split('.') ;
+                  strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+                  if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+                      obj.setAttribute("src", e.target.result) ;
+                  }else{
+                      //try{
+                      throw new Error('File type Error! please image file upload..') ;
+                      //}catch(e){
+                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
+                      //}
+                  }
+
+                  // alert(e.target.result); 
+              }
+              reader.readAsDataURL(file);
+          }
+      }
+
+      function show(){
+          var file_img=document.getElementById("img"),
+          iptfileupload = document.getElementById('iptfileupload') ;
+          getPath(file_img,iptfileupload,file_img) ;
+        
+      }
+
+  </script>
+  </body>
+
+

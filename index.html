@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "en" dir = "ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+  <meta name="viewport" content="user-scalable=no"/>
+  <link href="./style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  <script type="text/javascript">
+
+    window.onload = function() {
+      //$('#button-section').hide();
+
+      // When the window loads, start to initialize the SDK
+      FBInstant.initializeAsync().then(function() {
+
+        // Now that assets are loaded, call startGameAsync
+        FBInstant.startGameAsync().then(onStart);
+      });
+    };
+
+    function onStart() {
+      // This is called when the user has tapped Play
+      // Information from the SDK can now be accessed
+      $('#player-name').html(FBInstant.player.getName());
+      $('#player-id').html(FBInstant.player.getID());
+      $('#context-type').html(FBInstant.context.getType());
+      //$('#button-section').show();
+    }
+  </script>
+
+  <header>
+    <h1>Welcome to Zero Waste</h1>
+    <img src="logo.png" alt="logo">
+  </header>
+
+
+  <div class = Button>
+    <p><a id="Tutorial" href="./2.html">Tutorial</a></p>
+   </div>
+  <div class = Button>
+    <p><a id="Learn" href="./insertimage.html">Learn</a></p>
+  </div>
+  <div class = Button>
+    <p><a id="Track" href="./13.html">Track</a></p>
+  </div>
+
+</body>
+</html>

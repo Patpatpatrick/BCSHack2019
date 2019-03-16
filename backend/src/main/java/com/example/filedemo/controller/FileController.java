@@ -18,9 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class FileController {
@@ -47,6 +45,9 @@ public class FileController {
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
+
+        Report report = new Report(fileName, fileDownloadUri, latitude, longitude, category);
+        reportService.save(report);
 
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
@@ -77,5 +78,9 @@ public class FileController {
                 .body(resource);
     }
 
+    @GetMapping("/reports")
+    public List<Report> getAllReports() {
+        return reportService.getAllReports();
+    }
 
 }

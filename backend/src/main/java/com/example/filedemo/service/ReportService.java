@@ -14,7 +14,7 @@ public class ReportService {
     @Autowired
     ReportRepository reportRepository;
 
-    public List<Report> getAllCases() {
+    public List<Report> getAllReports() {
         List<Report> reports = new ArrayList<Report>();
         reportRepository.findAll().forEach(t -> reports.add(t));
         return reports;
@@ -24,7 +24,7 @@ public class ReportService {
         return reportRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Report report) {
+    public void save(Report report) {
         reportRepository.save(report);
     }
 

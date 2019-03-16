@@ -43,7 +43,7 @@ angular.module("app",[])
       // else if(response.data.predictions[0].tagName == "cardboard, box"){
       //   $scope.category = "lampposts";
       //  }
-      debugger;
+      // debugger;
       $scope.category = response.data.objects[0].object;
 
     }).catch(function(errorResponse) {

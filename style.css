@@ -6,18 +6,21 @@ html{
   }
 
 body{
+
     background-image: url("city buildings.jpg");
+    background-size: calc(450px + (500 - 450) * ((100vw - 300px) / (1600 - 300)));
     height: 100%;
     font-family: 'Helvetica';
     text-align: center;
-
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
+
  
  h1 {
   margin-top: 100px;
   margin-bottom: 100px;   
   color: black;
-  font-size: 70px;
+  font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
  }
 
 .Button{
@@ -38,7 +41,7 @@ body{
 .Description{
     margin-top: 70px;
     margin-bottom: 70px;
-    font-size: 70px;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .con{
@@ -54,11 +57,18 @@ body{
 .category{
     margin-top: 70px;
     margin-bottom: 70px;
-    font-size: 70px;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
     font-family: 'Helvetica';
-
-
 }
+
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    opacity: 0; /*hack to make customised upload file*/
+  }
 
 .submit {
     background-color: #D0E0C6;
@@ -68,8 +78,48 @@ body{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 70px;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
     border-radius: 30%
+  }
+
+  .container {
+    position: relative;
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Make the image responsive and centered */
+  .container img {
+    display: block;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Style the button and place it in the middle of the container/image */
+  .container .btn {
+    position: absolute;
+    top: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(120, 117, 117);
+    color: white;
+    font-size: calc(8px + (35 - 8) * ((100vw - 300px) / (1600 - 300)));
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .container .btn:hover {
+    background-color: black;
   }
   
 

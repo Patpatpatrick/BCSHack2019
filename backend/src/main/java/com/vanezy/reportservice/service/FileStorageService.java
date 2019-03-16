@@ -1,8 +1,8 @@
-package com.example.filedemo.service;
+package com.vanezy.reportservice.service;
 
-import com.example.filedemo.exception.FileStorageException;
-import com.example.filedemo.exception.MyFileNotFoundException;
-import com.example.filedemo.property.FileStorageProperties;
+import com.vanezy.reportservice.exception.FileStorageException;
+import com.vanezy.reportservice.exception.MyFileNotFoundException;
+import com.vanezy.reportservice.property.FileStorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;

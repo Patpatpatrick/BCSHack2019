@@ -1,4 +1,4 @@
-package com.example.filedemo.database.Entity;
+package com.vanezy.reportservice.database.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

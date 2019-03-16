@@ -1,6 +1,6 @@
-package com.example.filedemo.database.Repo;
+package com.vanezy.reportservice.database.Repo;
 
-import com.example.filedemo.database.Entity.Report;
+import com.vanezy.reportservice.database.Entity.Report;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ReportRepository extends CrudRepository<Report, Integer> {}

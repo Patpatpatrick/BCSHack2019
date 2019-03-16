@@ -1,10 +1,10 @@
-package com.example.filedemo.controller;
+package com.vanezy.reportservice.controller;
 
 
-import com.example.filedemo.database.Entity.Report;
-import com.example.filedemo.payload.UploadFileResponse;
-import com.example.filedemo.service.FileStorageService;
-import com.example.filedemo.service.ReportService;
+import com.vanezy.reportservice.database.Entity.Report;
+import com.vanezy.reportservice.payload.UploadFileResponse;
+import com.vanezy.reportservice.service.FileStorageService;
+import com.vanezy.reportservice.service.ReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
-package com.example.filedemo.service;
+package com.vanezy.reportservice.service;
 
-import com.example.filedemo.database.Entity.Report;
-import com.example.filedemo.database.Repo.ReportRepository;
+import com.vanezy.reportservice.database.Entity.Report;
+import com.vanezy.reportservice.database.Repo.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

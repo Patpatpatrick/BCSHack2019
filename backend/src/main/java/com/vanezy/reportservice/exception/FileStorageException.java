@@ -1,4 +1,4 @@
-package com.example.filedemo.exception;
+package com.vanezy.reportservice.exception;
 
 public class FileStorageException extends RuntimeException {
     public FileStorageException(String message) {

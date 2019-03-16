@@ -5,37 +5,93 @@
     <script src="angular.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
+
+  <header>
+    <h1>OneVAN App</h1>
+  </header>
+
+  
   
   <div class = browse>  
   <body id= "browse" ng-app="app" ng-controller="ctrl">
+      <div class="container">
+      <img src="./images/camera.png" alt="camera">
+      <div class="upload-btn-wrapper">
+      <button class="btn" id="submitphoto">Submit photo </button>
+      <input type="file" name="iptfileupload" onchange='show()'return-files ng-model="files"/>
+      <p><img src='1.jpg' 
+        onload='if (this.width>400 || this.height>600) if (this.width/this.height>2/3) this.width=400; else this.height=600;' 
+        onclick="picture_rotate(this)"
+        alt='' id='img'/></p>
+  
+    </div>
+    </div>
   </div>
 
-      
-    <input type="file" id='iptfileupload' onchange='show()' return-files ng-model="files">
-      
-      <p><img src='1.jpg' 
-      onload='if (this.width>400 || this.height>600) if (this.width/this.height>2/3) this.width=400; else this.height=600;' 
-      onclick="picture_rotate(this)"
-      alt='' id='img'/></p>
 
+      
+      
       
 
       <br>
- 
-     
+          <p>Click the button to get your coordinates.</p>
+
+          <button class = submit onclick="getLocation()">Add location</button>
+          
+          <p id="location here"></p>
+          
+          <script>
+          var x = document.getElementById("location here");
+          
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+          
+          function showPosition(position) {
+            
+            // "Latitude: " + position.coords.latitude + 
+            // "<br>Longitude: " + position.coords.longitude;
+            const lat = position.coords.latitude;
+            const long = position.coords.longitude;
+            const urlAddress = "https://us1.locationiq.com/v1/reverse.php?key=5a66057ee3efb4&lat=" + lat + "&lon=" + long + "&format=json";
+            console.log(urlAddress);
+            var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": urlAddress,
+              "method": "GET"
+            }
+
+            $.ajax(settings).done(function (response) {
+              
+              const adressToShow = response["display_name"];
+              console.log(adressToShow);
+              x.innerHTML = "Location: " + adressToShow;
+            });
+          }
+          </script>
+          <br>
+          <br>
       <button class = submit ng-disabled="!files" ng-click="upload(files)">
           Submit
-      </button>
-      
+      </button>    
       <div class = category> 
     <p>Category: {{category}}</p>
-    <p>Possible Contents: {{tags}}</p>
+
+    
       </div>
 
-      
+  
+
+
   <div class = Back>
-      <a id = "Back" href="./2.html">Back</a>
+      <a id = "Back" href="./index.html">Back</a>
     </div>
   
 
@@ -61,25 +117,16 @@
                       obj.style.filter=
                           "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+path+"', sizingMethod='scale');";  // IE通过滤镜的方式实现图片显示
                   }else{
-                      //try{
                       throw new Error('File type Error! please image file upload..');  
-                      //}catch(e){
-                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
-                      //}
                   }
               }else{
-                  // alert(fileQuery.value) ;
                   imgSrc = fileQuery.value ;
                   imgArr = imgSrc.split('.') ;
                   strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
                   if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
                       obj.src = fileQuery.value ;
                   }else{
-                      //try{
                       throw new Error('File type Error! please image file upload..') ;
-                      //}catch(e){
-                      //  alert('name: ' + e.name + 'message: ' + e.message) ;
-                      //}
                   }
 
               }
@@ -108,11 +155,22 @@
           }
       }
 
-      function show(){
-          var file_img=document.getElementById("img"),
-          iptfileupload = document.getElementById('iptfileupload') ;
-          getPath(file_img,iptfileupload,file_img) ;
-        
+      function show() {
+        var preview = document.querySelector('img');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+          preview.src = reader.result;
+          var element = document.getElementById('submitphoto');
+          element.parentNode.removeChild(element);
+          
+        }, false);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+
       }
 
   </script>

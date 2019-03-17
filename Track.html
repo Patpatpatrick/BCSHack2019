@@ -22,7 +22,7 @@
   </header>
 
   <script>
-
+      var imgSrc;
       function showTrack() {
         return $.ajax({
           "async": false,
@@ -34,7 +34,9 @@
         });
       }
       
+
       function addTable () { 
+        var currentDiv = document.getElementById("div1"); 
         var res = showTrack();
         // create a new div element 
         var newTable = document.createElement("table"); 
@@ -43,11 +45,45 @@
         res['responseJSON'].forEach((element) => {
             // Object.keys(element)
             var tablerow = document.createElement("tr");
-            var newContent = document.createTextNode(JSON.stringify(element)); 
-            tablerow.appendChild(newContent);
+            // var tablerowth = document.createElement("th");
+            // tablerowth.appendChild()
+            // tablerow.appendChild(tablerowth);
+              var tablerowtd1 = document.createElement("td");
+              var newContent1 = document.createTextNode(Object.keys(element)[0] + " " + element[Object.keys(element)[0]]); 
+              
+              var tablerowtd2 = document.createElement("td");
+              // var imgSrc = document.createElement("img");
+
+              // imgSrc = element[Object.keys(element)[1]];
+              var newContent2 = document.createTextNode(Object.keys(element)[1] + " " + element[Object.keys(element)[1]]); 
+              var tablerowtd3 = document.createElement("td");
+
+              var newContent3 = document.createTextNode(Object.keys(element)[2] + " " + element[Object.keys(element)[2]]); 
+              var tablerowtd4 = document.createElement("td");
+
+              var newContent4 = document.createTextNode(Object.keys(element)[3] + " " + element[Object.keys(element)[3]]); 
+              var tablerowtd5 = document.createElement("td");
+
+              var newContent5 = document.createTextNode(Object.keys(element)[4] + " " + element[Object.keys(element)[4]]); 
+
+              tablerowtd1.appendChild(newContent1);
+              tablerowtd2.appendChild(newContent2);
+              tablerowtd3.appendChild(newContent3);
+              tablerowtd4.appendChild(newContent4);
+              tablerowtd4.appendChild(newContent5);
+
+
+
+            // var newContent = document.createTextNode(JSON.stringify(element)); 
+            // tablerow.appendChild(newContent);
+            tablerow.appendChild(tablerowtd1);
+            tablerow.appendChild(tablerowtd2);
+            tablerow.appendChild(tablerowtd3);
+            tablerow.appendChild(tablerowtd4);
+            tablerow.appendChild(tablerowtd5);
+
             newTable.appendChild(tablerow);
         });
-        var currentDiv = document.getElementById("div1"); 
         document.body.insertBefore(newTable, currentDiv); 
 
 
@@ -66,7 +102,7 @@
   <div id='div1'></div>
   <!-- <table style="width:100%">
     <tr>
-      <th>Waste Type</th>
+      <th>Category</th>
       <th>Weight(kg)</th> 
       <th>Date</th>
     </tr>

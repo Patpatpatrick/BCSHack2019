@@ -155,6 +155,10 @@ body{
     border-radius: 0%
 }
 
+.smallerText {
+font-size: calc(10px + (30 - 10) * ((100vw - 300px) / (1600 - 300)));
+}
+
 /*#FAQ {
     text-decoration: none;
     font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
@@ -309,3 +313,4 @@ body{
     padding: 20px;
     border-radius: 30%
 }
+

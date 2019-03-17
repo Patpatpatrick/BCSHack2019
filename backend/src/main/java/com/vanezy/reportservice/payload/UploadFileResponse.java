@@ -1,5 +1,4 @@
-package com.example.filedemo.payload;
-
+package com.vanezy.reportservice.payload;
 
 public class UploadFileResponse {
     private String fileName;

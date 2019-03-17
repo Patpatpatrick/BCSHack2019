@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=0.5, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Traffic Layer</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 2;
+        padding: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Real Time Traffic</h1>
+    </header>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 49.2827, lng: -123.1207}
+        });
+
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcCE_sX8fGcHnZQYUkosIlIU8WtcDdLGQ&callback=initMap">
+    </script>
+  </body>
+</html>

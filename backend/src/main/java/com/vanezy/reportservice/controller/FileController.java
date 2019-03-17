@@ -1,9 +1,10 @@
-package com.example.filedemo.controller;
+package com.vanezy.reportservice.controller;
 
-import com.example.filedemo.database.Entity.Report;
-import com.example.filedemo.payload.UploadFileResponse;
-import com.example.filedemo.service.FileStorageService;
-import com.example.filedemo.service.ReportService;
+
+import com.vanezy.reportservice.database.Entity.Report;
+import com.vanezy.reportservice.payload.UploadFileResponse;
+import com.vanezy.reportservice.service.FileStorageService;
+import com.vanezy.reportservice.service.ReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class FileController {
@@ -28,6 +27,7 @@ public class FileController {
 
     @Autowired
     private FileStorageService fileStorageService;
+
 
     @Autowired
     private ReportService reportService;
@@ -46,9 +46,13 @@ public class FileController {
                 .path(fileName)
                 .toUriString();
 
+        Report report = new Report(fileName, fileDownloadUri, latitude, longitude, category);
+        reportService.save(report);
+
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
+
 
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
@@ -74,9 +78,9 @@ public class FileController {
                 .body(resource);
     }
 
-    // @PostMapping("/persons")
-    // private int saveReport(@RequestBody Report report) {
-    //     reportService.saveOrUpdate(report);
-    //     return report.getId();
-    // }
+    @GetMapping("/reports")
+    public List<Report> getAllReports() {
+        return reportService.getAllReports();
+    }
+
 }

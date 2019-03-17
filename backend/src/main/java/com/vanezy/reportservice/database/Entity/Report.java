@@ -1,9 +1,10 @@
-package com.example.filedemo.database.Entity;
+package com.vanezy.reportservice.database.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.util.Calendar;
 
 @Entity
 public class Report {
@@ -18,6 +19,18 @@ public class Report {
     private Date date;
     private String status;
     private String category;
+
+    public Report() { }
+
+    public Report(String fileName, String fileUrl, Double latitude, Double longitude, String category) {
+        this.fileName = fileName;
+        this.fileUrl = fileUrl;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        date = new Date(Calendar.getInstance().getTime().getTime());
+        status = "In Progress";
+        this.category = category;
+    }
 
     public int getId() {
         return id;

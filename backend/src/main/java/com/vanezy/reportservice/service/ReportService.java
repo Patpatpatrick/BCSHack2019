@@ -1,7 +1,7 @@
-package com.example.filedemo.service;
+package com.vanezy.reportservice.service;
 
-import com.example.filedemo.database.Entity.Report;
-import com.example.filedemo.database.Repo.ReportRepository;
+import com.vanezy.reportservice.database.Entity.Report;
+import com.vanezy.reportservice.database.Repo.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class ReportService {
     @Autowired
     ReportRepository reportRepository;
 
-    public List<Report> getAllCases() {
+    public List<Report> getAllReports() {
         List<Report> reports = new ArrayList<Report>();
         reportRepository.findAll().forEach(t -> reports.add(t));
         return reports;
@@ -24,7 +24,7 @@ public class ReportService {
         return reportRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Report report) {
+    public void save(Report report) {
         reportRepository.save(report);
     }
 

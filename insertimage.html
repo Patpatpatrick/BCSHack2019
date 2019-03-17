@@ -74,8 +74,25 @@
               const adressToShow = response["display_name"];
               console.log(adressToShow);
               x.innerHTML = "Location: " + adressToShow;
+            }).done(function (response) {
+                var formData = new FormData();
+                var file    = document.querySelector('input[type=file]').files[0];
+                formData.append("file", file); 
+                formData.append("latitude", lat)
+                formData.append("longitude", long)
+                formData.append("category", "asd")
+
+                $.ajax({
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://localhost:8080/upload",
+                    "method": "POST",
+                    "contentType": false,
+                    processData: false,
+                    "data": formData
+                })
             });
-          }
+        }
           </script>
           <br>
           <br>
@@ -83,8 +100,8 @@
          >Submit</a>
       <div class = category> 
     <p>Category: {{category}}</p>
-
-    
+   
+ 
       </div>
 
   

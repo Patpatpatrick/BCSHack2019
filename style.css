@@ -7,12 +7,13 @@ html{
 
 body{
 
-    background-image: url("city buildings.jpg");
+    background-image: url("-.jpg");
     background-size: calc(450px + (500 - 450) * ((100vw - 300px) / (1600 - 300)));
     height: 100%;
-    font-family: 'Helvetica';
+    font-family: "Trebuchet MS";
     text-align: center;
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    opacity: 80;
 }
 
  
@@ -58,7 +59,7 @@ body{
     margin-top: 70px;
     margin-bottom: 70px;
     font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
-    font-family: 'Helvetica';
+    font-family: "Trebuchet MS";
 }
 
 
@@ -71,16 +72,26 @@ body{
   }
 
 .submit {
-    background-color: #D0E0C6;
-    border:black 2px solid;
+    background-color: #bbe8e5;
+    border: white 2px solid;
     color: black;
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
-    border-radius: 30%
+    border-radius: 0%
   }
+
+  .fakesubmit {
+      background-color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
+      border-radius: 30%
+    }
 
   .container {
     position: relative;
@@ -121,26 +132,7 @@ body{
   .container .btn:hover {
     background-color: black;
   }
-  
 
-#Login {
-    text-decoration: none;
-    font-size: 70px;
-    border: black 2px solid;
-    color: black;
-    padding: 20px;
-    border-radius: 30%
-}
-
-
-#Track {
-    text-decoration: none;
-    font-size: 70px;
-    border: black 2px solid;
-    color: black;
-    padding: 20px;
-    border-radius: 30%
-}
 
 #Back {
     text-decoration: none;
@@ -152,30 +144,33 @@ body{
 }
 
 #Home {
-    text-decoration: none;
-    font-size: 70px;
+    background-color: #bbe8e5;
     border: black 2px solid;
     color: black;
-    padding: 20px;
-    border-radius: 30%
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
+    border-radius: 0%
 }
 
-#FAQ {
+/*#FAQ {
     text-decoration: none;
-    font-size: 70px;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
     border: black 2px solid;
     color: black;
     padding: 20px;
     border-radius: 30%
-}
+}*/
 
-#Submit-Photo {
+/*#Submit-Photo {
     text-decoration: none;
-    font-size: 70px;
+    font-size: calc(30px + (70 - 30) * ((100vw - 300px) / (1600 - 300)));
     border: black 2px solid;
     color: black;
     padding: 20px;
-    border-radius: 30%
+    border-radius: 30%*/
 }
 
 #Updates {

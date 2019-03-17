@@ -9,7 +9,7 @@
   </head>
 
   <header>
-    <h1>OneVAN App</h1>
+    <h1>Submit Photo</h1>
   </header>
 
   
@@ -38,7 +38,7 @@
       <br>
           <p>Click the button to get your coordinates.</p>
 
-          <button class = submit onclick="getLocation()">Add location</button>
+          <button class = submit onclick="getLocation()" ng-click="upload(files)">Add location</button>
           
           <p id="location here"></p>
           
@@ -46,6 +46,7 @@
           var x = document.getElementById("location here");
           
           function getLocation() {
+
             if (navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(showPosition);
             } else { 
@@ -78,9 +79,8 @@
           </script>
           <br>
           <br>
-      <button class = submit ng-disabled="!files" ng-click="upload(files)">
-          Submit
-      </button>    
+      <a class = submit href="./SUCCESSFULLY-SENT.html" ng-disabled="!files"
+         >Submit</a>
       <div class = category> 
     <p>Category: {{category}}</p>
 
@@ -90,8 +90,8 @@
   
 
 
-  <div class = Back>
-      <a id = "Back" href="./index.html">Back</a>
+  <div name = Back>
+      <a id = "Home" href="./index.html">Back</a>
     </div>
   
 

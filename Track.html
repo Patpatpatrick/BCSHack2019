@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+  <meta name="viewport" content="user-scalable=no"/>
+  <link href="./style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  <script type="text/javascript">
+
+  </script>
+
+  <header>
+    <h1>Track Record</h1>
+  </header>
+
+  <script>
+
+      function showTrack() {
+        return $.ajax({
+          "async": false,
+          "crossDomain": true,
+          "url": "http://localhost:8080/reports",
+          "method": "GET",
+          "contentType": false,
+          processData: false
+        });
+      }
+      
+      function addTable () { 
+        var res = showTrack();
+        // create a new div element 
+        var newTable = document.createElement("table"); 
+        // and give it some content
+        // debugger;
+        res['responseJSON'].forEach((element) => {
+            // Object.keys(element)
+            var tablerow = document.createElement("tr");
+            var newContent = document.createTextNode(JSON.stringify(element)); 
+            tablerow.appendChild(newContent);
+            newTable.appendChild(tablerow);
+        });
+        var currentDiv = document.getElementById("div1"); 
+        document.body.insertBefore(newTable, currentDiv); 
+
+
+        // var newContent = document.createTextNode("Hi there and greetings!"); 
+        // // add the text node to the newly created div
+        // newDiv.appendChild(newContent);  
+
+        // // add the newly created element and its content into the DOM 
+        // var currentDiv = document.getElementById("div1"); 
+        // document.body.insertBefore(newDiv, currentDiv); 
+      }
+      addTable();
+      
+  </script>
+
+  <div id='div1'></div>
+  <!-- <table style="width:100%">
+    <tr>
+      <th>Waste Type</th>
+      <th>Weight(kg)</th> 
+      <th>Date</th>
+    </tr>
+
+    <tr>
+      <td>Paper</td>
+      <td>0.1</td> 
+      <td>01/26/2019</td>
+    </tr>
+    <tr>
+      <td>Plastic bottle</td>
+      <td>0.2</td> 
+      <td>01/27/2019</td>
+    </tr>
+  </table> -->
+
+
+  <div class = Back>
+      <a id = "Back" href="./2.html">Back</a>
+    </div>
+  
+
+</body>
+</html>

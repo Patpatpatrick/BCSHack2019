@@ -52,10 +52,10 @@
             } else { 
               x.innerHTML = "Geolocation is not supported by this browser.";
             }
+            upload(files);
           }
           
           function showPosition(position) {
-            upload(files);
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
             const urlAddress = "https://us1.locationiq.com/v1/reverse.php?key=5a66057ee3efb4&lat=" + lat + "&lon=" + long + "&format=json";

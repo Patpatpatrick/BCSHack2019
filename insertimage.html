@@ -55,9 +55,7 @@
           }
           
           function showPosition(position) {
-            
-            // "Latitude: " + position.coords.latitude + 
-            // "<br>Longitude: " + position.coords.longitude;
+            upload(files);
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
             const urlAddress = "https://us1.locationiq.com/v1/reverse.php?key=5a66057ee3efb4&lat=" + lat + "&lon=" + long + "&format=json";

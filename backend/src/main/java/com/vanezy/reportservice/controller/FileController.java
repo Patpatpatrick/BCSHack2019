@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class FileController {
 
@@ -48,7 +49,7 @@ public class FileController {
 
         Report report = new Report(fileName, fileDownloadUri, latitude, longitude, category);
         reportService.save(report);
-
+        
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
